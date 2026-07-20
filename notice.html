@@ -1,108 +1,191 @@
-<h3>
-    🌐 网站访问说明
-</h3>
+<style>
+    .notice-content {
+        color: #425066;
+        font-size: 15px;
+        line-height: 1.8;
+    }
 
-<div class="notice-date">
-    2026年7月20日
-</div>
+    .notice-content * {
+        box-sizing: border-box;
+    }
 
-<div class="notice-box">
+    .notice-content h2 {
+        margin: 0 0 16px;
+        color: #26364d;
+        font-size: 21px;
+        font-weight: 750;
+        line-height: 1.4;
+        letter-spacing: 0.2px;
+    }
 
-    <p>
-        由于网络环境调整，本站目前已限制中国大陆网络直接访问。
-    </p>
+    .notice-card {
+        position: relative;
+        overflow: hidden;
+        padding: 19px;
+        background:
+            linear-gradient(
+                145deg,
+                rgba(248, 252, 255, 0.96),
+                rgba(239, 247, 255, 0.84)
+            );
+        border: 1px solid rgba(104, 164, 218, 0.22);
+        border-radius: 16px;
+        box-shadow:
+            0 8px 25px rgba(48, 112, 170, 0.08),
+            inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    }
 
-    <p>
-        中国大陆地区用户访问本站，请开启
-        <strong>VPN</strong>
-        后重新进入。
-    </p>
+    .notice-card::before {
+        content: "";
+        position: absolute;
+        top: -45px;
+        right: -45px;
+        width: 120px;
+        height: 120px;
+        background: rgba(55, 157, 239, 0.08);
+        border-radius: 50%;
+        pointer-events: none;
+    }
 
-    <p>
-        为方便用户访问，本站推荐：
-        <strong>旧巷VPN</strong>
-    </p>
+    .notice-content p {
+        position: relative;
+        margin: 0 0 13px;
+    }
 
-</div>
+    .notice-content p:last-of-type {
+        margin-bottom: 18px;
+    }
 
+    .notice-content strong {
+        color: #167fc8;
+        font-weight: 700;
+    }
 
-<h3 style="margin-top:22px;">
-    🚀 VPN推荐
-</h3>
+    .notice-code-row {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 7px;
+        margin: 15px 0;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.68);
+        border: 1px dashed rgba(30, 144, 219, 0.36);
+        border-radius: 12px;
+    }
 
-<div class="notice-box">
+    .notice-code-label {
+        color: #647187;
+        font-size: 14px;
+    }
 
-    <p>
-        <strong>旧巷VPN</strong>
-    </p>
+    .notice-code {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 3px 10px;
+        color: #087bc5;
+        background: rgba(27, 148, 230, 0.11);
+        border-radius: 7px;
+        font-family: inherit;
+        font-size: 15px;
+        font-weight: 750;
+        letter-spacing: 0.7px;
+        user-select: all;
+    }
 
-    <p>
-        官网：
-        <a href="https://www.jiux88.com/" target="_blank">
-            https://www.jiux88.com/
+    .notice-tip {
+        margin-top: 2px !important;
+        color: #758196;
+        font-size: 13px;
+    }
+
+    .notice-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 46px;
+        padding: 10px 18px;
+        color: #fff;
+        background: linear-gradient(135deg, #58b5f8, #168bdc);
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(22, 139, 220, 0.2);
+        font-size: 15px;
+        font-weight: 700;
+        text-decoration: none;
+        transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease,
+            filter 0.2s ease;
+    }
+
+    .notice-link:hover {
+        filter: brightness(1.03);
+        transform: translateY(-1px);
+        box-shadow: 0 11px 24px rgba(22, 139, 220, 0.27);
+    }
+
+    .notice-link:active {
+        transform: scale(0.985);
+    }
+
+    @media (max-width: 480px) {
+        .notice-content {
+            font-size: 14px;
+        }
+
+        .notice-content h2 {
+            margin-bottom: 14px;
+            font-size: 19px;
+        }
+
+        .notice-card {
+            padding: 16px;
+            border-radius: 14px;
+        }
+    }
+</style>
+
+<div class="notice-content">
+    <h2>网站访问说明</h2>
+
+    <div class="notice-card">
+        <p>
+            由于网络环境调整，本站目前已限制中国大陆网络直接访问。
+        </p>
+
+        <p>
+            中国大陆地区用户访问本站时，请先开启
+            <strong>VPN</strong>
+            后再进入网站。
+        </p>
+
+        <p>
+            暂无可用 VPN 的用户，可以使用本站推荐的
+            <strong>旧巷 VPN</strong>。
+        </p>
+
+        <div class="notice-code-row">
+            <span class="notice-code-label">专属兑换码</span>
+            <span class="notice-code">acgyxs</span>
+        </div>
+
+        <p>
+            注册后使用兑换码，即可免费领取
+            <strong>一个月标准流量套餐</strong>。
+        </p>
+
+        <p class="notice-tip">
+            具体领取规则及套餐内容以旧巷 VPN 官方页面显示为准。
+        </p>
+
+        <a
+            class="notice-link"
+            href="https://www.jiux88.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            前往旧巷 VPN
         </a>
-    </p>
-
-    <p>
-        使用兑换码：
-        <strong style="color:#169af5;">
-            acgyxs
-        </strong>
-    </p>
-
-    <p>
-        可免费领取一个月标准流量套餐。
-    </p>
-
-    <a 
-        href="https://www.jiux88.com/"
-        target="_blank"
-        style="
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            margin-top:10px;
-            padding:10px 20px;
-            border-radius:12px;
-            background:linear-gradient(135deg,#4facfe,#00c6ff);
-            color:#fff;
-            font-weight:600;
-            text-decoration:none;
-        "
-    >
-        🚀 前往旧巷VPN
-    </a>
-
-</div>
-
-
-<h3 style="margin-top:22px;">
-    💬 官方交流群
-</h3>
-
-<div class="notice-box">
-
-    <p>
-        建议加入官方交流群，获取最新网站动态及通知。
-    </p>
-
-    <a 
-        href="https://qm.qq.com/q/2mxNsMxaQo"
-        target="_blank"
-        style="
-            display:inline-flex;
-            align-items:center;
-            justify-content:center;
-            margin-top:8px;
-            padding:10px 20px;
-            border-radius:12px;
-            background:linear-gradient(135deg,#4facfe,#00c6ff);
-            color:#fff;
-            font-weight:600;
-            text-decoration:none;
-        "
-    >
-        💬 加入QQ群
-    </a>
-
+    </div>
 </div>

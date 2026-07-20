@@ -13,9 +13,8 @@
         content="ACG游戏社官方发布页，获取网站入口、公告及交流群信息。"
     >
 
-    <meta name="theme-color" content="#eaf5ff">
+    <meta name="theme-color" content="#dcecff">
 
-    <!-- 尽量减少浏览器直接使用旧页面 -->
     <meta
         http-equiv="Cache-Control"
         content="no-cache, no-store, must-revalidate"
@@ -33,18 +32,19 @@
 
     <style>
         :root {
-            --text-main: #26364d;
-            --text-secondary: #6d7b90;
-            --primary: #168fe5;
-            --primary-light: #5cbcff;
-            --primary-dark: #0879d1;
+            --text-main: #17233a;
+            --text-secondary: #66758d;
+            --text-light: #8c99ac;
 
-            --card-bg: rgba(255, 255, 255, 0.78);
-            --card-border: rgba(255, 255, 255, 0.72);
+            --primary-start: #49b7ff;
+            --primary-middle: #22a7f4;
+            --primary-end: #0e8fe8;
 
-            --shadow:
-                0 22px 65px rgba(45, 104, 160, 0.16),
-                inset 0 1px 0 rgba(255, 255, 255, 0.85);
+            --button-bg: rgba(255, 255, 255, 0.73);
+            --button-border: rgba(255, 255, 255, 0.82);
+
+            --shadow-blue:
+                0 16px 42px rgba(52, 134, 208, 0.16);
         }
 
         * {
@@ -53,47 +53,42 @@
 
         html {
             min-height: 100%;
-            background: #eaf5ff;
+            background: #dcecff;
             -webkit-text-size-adjust: 100%;
         }
 
         body {
+            position: relative;
             min-height: 100vh;
             min-height: 100dvh;
             margin: 0;
-
-            padding:
-                calc(24px + env(safe-area-inset-top))
-                18px
-                calc(24px + env(safe-area-inset-bottom));
-
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            overflow-x: hidden;
 
             color: var(--text-main);
 
             background:
                 radial-gradient(
-                    circle at 15% 18%,
-                    rgba(120, 199, 255, 0.48),
-                    transparent 34%
+                    circle at 50% 18%,
+                    rgba(255, 255, 255, 0.82) 0,
+                    rgba(255, 255, 255, 0.34) 22%,
+                    transparent 48%
                 ),
                 radial-gradient(
-                    circle at 88% 20%,
-                    rgba(185, 167, 255, 0.28),
-                    transparent 31%
-                ),
-                radial-gradient(
-                    circle at 50% 92%,
-                    rgba(100, 205, 255, 0.28),
+                    circle at 12% 48%,
+                    rgba(94, 188, 255, 0.25) 0,
                     transparent 38%
                 ),
+                radial-gradient(
+                    circle at 90% 74%,
+                    rgba(152, 145, 255, 0.22) 0,
+                    transparent 42%
+                ),
                 linear-gradient(
-                    145deg,
-                    #eef8ff 0%,
-                    #e7f2ff 48%,
-                    #f3f0ff 100%
+                    155deg,
+                    #e8f5ff 0%,
+                    #d9ecff 42%,
+                    #d8e3ff 72%,
+                    #d9dcff 100%
                 );
 
             font-family:
@@ -105,8 +100,6 @@
                 "Microsoft YaHei",
                 Arial,
                 sans-serif;
-
-            overflow-x: hidden;
         }
 
         body::before,
@@ -114,25 +107,25 @@
             content: "";
             position: fixed;
             z-index: 0;
-            border-radius: 999px;
+            border-radius: 50%;
             pointer-events: none;
-            filter: blur(4px);
+            filter: blur(10px);
         }
 
         body::before {
-            top: 8%;
-            left: -90px;
-            width: 230px;
-            height: 230px;
-            background: rgba(87, 181, 250, 0.17);
+            top: 5%;
+            left: -110px;
+            width: 300px;
+            height: 300px;
+            background: rgba(103, 197, 255, 0.17);
         }
 
         body::after {
-            right: -100px;
-            bottom: 5%;
-            width: 270px;
-            height: 270px;
-            background: rgba(154, 142, 247, 0.13);
+            right: -130px;
+            bottom: 3%;
+            width: 340px;
+            height: 340px;
+            background: rgba(158, 149, 255, 0.15);
         }
 
         button,
@@ -145,178 +138,172 @@
             border: 0;
         }
 
-        .page {
+        .release-page {
             position: relative;
             z-index: 1;
-            width: min(100%, 420px);
+
+            display: flex;
+            flex-direction: column;
+
+            width: min(100%, 520px);
+            min-height: 100vh;
+            min-height: 100dvh;
+            margin: 0 auto;
+
+            padding:
+                calc(58px + env(safe-area-inset-top))
+                28px
+                calc(22px + env(safe-area-inset-bottom));
         }
 
-        .main-card {
-            position: relative;
-            overflow: hidden;
-            padding: 32px 24px 22px;
-
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 28px;
-
-            box-shadow: var(--shadow);
-
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-        }
-
-        .main-card::before {
-            content: "";
-            position: absolute;
-            top: -90px;
-            right: -80px;
-            width: 220px;
-            height: 220px;
-
-            background:
-                radial-gradient(
-                    circle,
-                    rgba(71, 170, 244, 0.17),
-                    transparent 68%
-                );
-
-            border-radius: 50%;
-            pointer-events: none;
+        .release-main {
+            display: flex;
+            flex: 1;
+            flex-direction: column;
+            justify-content: center;
+            width: 100%;
         }
 
         .brand {
-            position: relative;
             text-align: center;
         }
 
-        .avatar-wrap {
+        .avatar-shell {
             position: relative;
             display: inline-flex;
-            margin-bottom: 16px;
-        }
+            align-items: center;
+            justify-content: center;
 
-        .avatar-wrap::before {
-            content: "";
-            position: absolute;
-            inset: -6px;
+            width: 126px;
+            height: 126px;
+            margin-bottom: 23px;
+
+            border-radius: 50%;
 
             background:
                 linear-gradient(
-                    135deg,
-                    rgba(91, 188, 255, 0.48),
-                    rgba(177, 153, 255, 0.32)
+                    145deg,
+                    rgba(255, 255, 255, 0.84),
+                    rgba(255, 255, 255, 0.38)
                 );
 
-            border-radius: 28px;
-            filter: blur(8px);
-            opacity: 0.75;
+            box-shadow:
+                0 0 0 12px rgba(255, 255, 255, 0.18),
+                0 0 45px rgba(64, 168, 240, 0.28),
+                0 18px 40px rgba(67, 129, 190, 0.17);
+
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+        }
+
+        .avatar-shell::before {
+            content: "";
+            position: absolute;
+            inset: -11px;
+
+            border: 1px solid rgba(255, 255, 255, 0.38);
+            border-radius: inherit;
+
+            box-shadow:
+                inset 0 0 25px rgba(79, 179, 246, 0.13);
         }
 
         .avatar {
             position: relative;
-            display: block;
+            z-index: 1;
 
-            width: 92px;
-            height: 92px;
+            display: block;
+            width: 104px;
+            height: 104px;
 
             object-fit: cover;
             background: #ffffff;
 
-            border: 4px solid rgba(255, 255, 255, 0.88);
-            border-radius: 25px;
+            border: 5px solid rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
 
             box-shadow:
-                0 13px 30px rgba(44, 113, 172, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.8);
+                0 10px 26px rgba(48, 113, 174, 0.18);
         }
 
         .site-name {
             margin: 0;
-            color: #26364d;
-            font-size: 25px;
-            font-weight: 800;
-            line-height: 1.35;
-            letter-spacing: 0.8px;
+
+            color: #162137;
+            font-size: clamp(28px, 7.2vw, 35px);
+            font-weight: 850;
+            line-height: 1.25;
+            letter-spacing: 0.4px;
         }
 
-        .site-description {
-            margin: 8px 0 0;
-            color: var(--text-secondary);
-            font-size: 14px;
-            line-height: 1.7;
-            letter-spacing: 0.3px;
+        .site-slogan {
+            margin: 14px 0 0;
+
+            color: #65738a;
+            font-size: 17px;
+            font-weight: 450;
+            line-height: 1.6;
+            letter-spacing: 2px;
         }
 
-        .slogan {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
+        .brand-divider {
+            width: 66px;
+            height: 4px;
+            margin: 25px auto 0;
 
-            margin-top: 13px;
-            padding: 6px 12px;
-
-            color: #287fb9;
-            background: rgba(65, 165, 235, 0.09);
-            border: 1px solid rgba(70, 166, 232, 0.15);
+            background: rgba(255, 255, 255, 0.8);
             border-radius: 999px;
 
-            font-size: 12px;
-            font-weight: 650;
-        }
-
-        .slogan-dot {
-            width: 6px;
-            height: 6px;
-
-            background: #29a1ec;
-            border-radius: 50%;
-
             box-shadow:
-                0 0 0 4px rgba(41, 161, 236, 0.11);
+                0 2px 10px rgba(255, 255, 255, 0.5);
         }
 
         .actions {
             display: grid;
-            gap: 11px;
-            margin-top: 26px;
+            gap: 14px;
+            width: 100%;
+            margin-top: 43px;
         }
 
         .action-button {
             position: relative;
+
             display: flex;
             align-items: center;
 
             width: 100%;
-            min-height: 55px;
-            padding: 10px 14px;
+            min-height: 66px;
+            padding: 11px 18px;
 
-            color: #41516a;
-            background: rgba(255, 255, 255, 0.66);
+            color: #26344a;
+            background: var(--button-bg);
 
-            border: 1px solid rgba(119, 167, 209, 0.17);
-            border-radius: 16px;
+            border: 1px solid var(--button-border);
+            border-radius: 22px;
 
             box-shadow:
-                0 7px 20px rgba(55, 111, 160, 0.07),
-                inset 0 1px 0 rgba(255, 255, 255, 0.78);
+                0 12px 28px rgba(54, 108, 164, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.9);
 
-            text-align: left;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+
             text-decoration: none;
+            text-align: left;
             cursor: pointer;
 
             transition:
                 transform 0.2s ease,
-                box-shadow 0.2s ease,
-                background 0.2s ease;
+                background 0.2s ease,
+                box-shadow 0.2s ease;
         }
 
         .action-button:hover {
             background: rgba(255, 255, 255, 0.86);
 
             box-shadow:
-                0 10px 25px rgba(55, 111, 160, 0.12),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                0 15px 32px rgba(54, 108, 164, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.94);
 
             transform: translateY(-1px);
         }
@@ -326,35 +313,37 @@
         }
 
         .action-button-primary {
+            min-height: 70px;
+
             color: #ffffff;
 
             background:
                 linear-gradient(
                     135deg,
-                    #35acf4 0%,
-                    #168fe5 54%,
-                    #0879d1 100%
+                    var(--primary-start) 0%,
+                    var(--primary-middle) 48%,
+                    var(--primary-end) 100%
                 );
 
-            border-color: rgba(255, 255, 255, 0.22);
+            border-color: rgba(255, 255, 255, 0.34);
 
             box-shadow:
-                0 12px 27px rgba(14, 132, 220, 0.25),
-                inset 0 1px 0 rgba(255, 255, 255, 0.28);
+                0 15px 32px rgba(17, 150, 232, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.32);
         }
 
         .action-button-primary:hover {
             background:
                 linear-gradient(
                     135deg,
-                    #42b5fa 0%,
-                    #198fe4 55%,
-                    #0875c9 100%
+                    #57c0ff 0%,
+                    #29acf7 48%,
+                    #1089df 100%
                 );
 
             box-shadow:
-                0 14px 31px rgba(14, 132, 220, 0.31),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+                0 18px 38px rgba(17, 150, 232, 0.36),
+                inset 0 1px 0 rgba(255, 255, 255, 0.36);
         }
 
         .action-icon {
@@ -363,23 +352,23 @@
             justify-content: center;
             flex: 0 0 auto;
 
-            width: 37px;
-            height: 37px;
-            margin-right: 12px;
+            width: 42px;
+            height: 42px;
+            margin-right: 14px;
 
-            color: #168ad9;
-            background: rgba(38, 151, 226, 0.1);
-            border-radius: 12px;
+            color: #258ed3;
+            background: rgba(54, 151, 218, 0.1);
+            border-radius: 15px;
         }
 
         .action-button-primary .action-icon {
             color: #ffffff;
-            background: rgba(255, 255, 255, 0.17);
+            background: rgba(255, 255, 255, 0.18);
         }
 
         .action-icon svg {
-            width: 20px;
-            height: 20px;
+            width: 22px;
+            height: 22px;
             stroke: currentColor;
         }
 
@@ -387,25 +376,27 @@
             display: flex;
             flex: 1;
             flex-direction: column;
+            justify-content: center;
             min-width: 0;
         }
 
         .action-title {
-            font-size: 15px;
-            font-weight: 750;
+            font-size: 17px;
+            font-weight: 800;
             line-height: 1.35;
         }
 
         .action-description {
-            margin-top: 2px;
-            color: #8995a6;
-            font-size: 11px;
+            margin-top: 3px;
+
+            color: #8793a4;
+            font-size: 12px;
             font-weight: 450;
             line-height: 1.4;
         }
 
         .action-button-primary .action-description {
-            color: rgba(255, 255, 255, 0.75);
+            color: rgba(255, 255, 255, 0.76);
         }
 
         .action-arrow {
@@ -414,38 +405,40 @@
             justify-content: center;
             flex: 0 0 auto;
 
-            width: 28px;
-            height: 28px;
-            margin-left: 8px;
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
 
-            color: #9ba7b5;
+            color: #97a4b5;
         }
 
         .action-button-primary .action-arrow {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.84);
         }
 
         .action-arrow svg {
-            width: 18px;
-            height: 18px;
+            width: 19px;
+            height: 19px;
             stroke: currentColor;
         }
 
-        .footer {
-            margin-top: 20px;
-            color: #8d99aa;
+        .page-footer {
+            flex: 0 0 auto;
+            margin-top: 34px;
+
+            color: rgba(82, 99, 124, 0.66);
             font-size: 11px;
-            line-height: 1.7;
+            line-height: 1.8;
             text-align: center;
         }
 
-        .footer p {
+        .page-footer p {
             margin: 0;
         }
 
-        /* ==============================
-           网站公告弹窗
-        ============================== */
+        /* =========================
+           公告弹窗
+        ========================= */
 
         .notice-modal {
             position: fixed;
@@ -457,14 +450,14 @@
             justify-content: center;
 
             padding:
-                calc(18px + env(safe-area-inset-top))
-                18px
-                calc(18px + env(safe-area-inset-bottom));
+                calc(16px + env(safe-area-inset-top))
+                14px
+                calc(16px + env(safe-area-inset-bottom));
 
-            background: rgba(41, 65, 93, 0.3);
+            background: rgba(38, 62, 91, 0.31);
 
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
 
             opacity: 0;
             visibility: hidden;
@@ -485,22 +478,21 @@
             display: flex;
             flex-direction: column;
 
-            width: min(100%, 470px);
-
-            max-height: min(84vh, 760px);
-            max-height: min(84dvh, 760px);
+            width: min(100%, 480px);
+            max-height: min(88vh, 780px);
+            max-height: min(88dvh, 780px);
 
             overflow: hidden;
 
-            background: rgba(255, 255, 255, 0.93);
-            border: 1px solid rgba(255, 255, 255, 0.82);
-            border-radius: 27px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(255, 255, 255, 0.86);
+            border-radius: 28px;
 
             box-shadow:
-                0 28px 80px rgba(31, 67, 105, 0.28),
-                inset 0 1px 0 rgba(255, 255, 255, 0.9);
+                0 30px 85px rgba(27, 61, 100, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.92);
 
-            transform: translateY(14px) scale(0.97);
+            transform: translateY(15px) scale(0.97);
 
             transition: transform 0.24s ease;
         }
@@ -514,11 +506,11 @@
             align-items: center;
             flex: 0 0 auto;
 
-            min-height: 76px;
-            padding: 17px 18px 15px 23px;
+            min-height: 74px;
+            padding: 16px 17px 15px 22px;
 
             border-bottom:
-                1px solid rgba(112, 147, 180, 0.13);
+                1px solid rgba(111, 146, 179, 0.14);
         }
 
         .notice-heading {
@@ -528,16 +520,18 @@
 
         .notice-title {
             margin: 0;
+
             color: #26364d;
             font-size: 20px;
-            font-weight: 800;
+            font-weight: 850;
             line-height: 1.35;
         }
 
         .notice-date {
             display: block;
             margin-top: 3px;
-            color: #98a3b2;
+
+            color: #95a0af;
             font-size: 11px;
             line-height: 1.4;
         }
@@ -556,21 +550,21 @@
             height: 42px;
             margin-left: 12px;
 
-            color: #7e8b9d;
-            background: rgba(111, 138, 165, 0.09);
+            color: #7c899a;
+            background: rgba(105, 135, 164, 0.1);
             border-radius: 50%;
 
             cursor: pointer;
 
             transition:
-                background 0.2s ease,
                 color 0.2s ease,
+                background 0.2s ease,
                 transform 0.2s ease;
         }
 
         .notice-close:hover {
             color: #526175;
-            background: rgba(111, 138, 165, 0.15);
+            background: rgba(105, 135, 164, 0.16);
         }
 
         .notice-close:active {
@@ -587,7 +581,7 @@
             flex: 1;
             min-height: 0;
 
-            padding: 20px 22px 24px;
+            padding: 19px 21px 23px;
 
             overflow-x: hidden;
             overflow-y: auto;
@@ -602,7 +596,7 @@
             align-items: center;
             justify-content: center;
 
-            min-height: 220px;
+            min-height: 240px;
 
             color: #7f8c9e;
             font-size: 14px;
@@ -616,8 +610,8 @@
         }
 
         .loading-spinner {
-            width: 28px;
-            height: 28px;
+            width: 29px;
+            height: 29px;
 
             border: 3px solid rgba(32, 145, 222, 0.14);
             border-top-color: #2091de;
@@ -636,76 +630,125 @@
             overflow: hidden;
         }
 
-        /* ==============================
+        /* =========================
            手机端适配
-        ============================== */
+        ========================= */
 
-        @media (max-width: 480px) {
-            body {
-                align-items: flex-start;
-
+        @media (max-width: 560px) {
+            .release-page {
                 padding:
-                    calc(18px + env(safe-area-inset-top))
-                    14px
+                    calc(34px + env(safe-area-inset-top))
+                    23px
                     calc(18px + env(safe-area-inset-bottom));
             }
 
-            .main-card {
-                padding: 28px 19px 20px;
-                border-radius: 25px;
+            .avatar-shell {
+                width: 116px;
+                height: 116px;
+                margin-bottom: 20px;
             }
 
             .avatar {
-                width: 86px;
-                height: 86px;
-                border-radius: 23px;
+                width: 96px;
+                height: 96px;
             }
 
-            .site-name {
-                font-size: 23px;
+            .site-slogan {
+                margin-top: 12px;
+                font-size: 16px;
+            }
+
+            .brand-divider {
+                margin-top: 22px;
             }
 
             .actions {
-                margin-top: 23px;
+                gap: 13px;
+                margin-top: 37px;
             }
 
             .action-button {
-                min-height: 53px;
-                padding: 9px 12px;
-                border-radius: 15px;
+                min-height: 63px;
+                padding: 10px 15px;
+                border-radius: 20px;
             }
 
-            .notice-modal {
-                align-items: center;
+            .action-button-primary {
+                min-height: 68px;
+            }
 
-                padding:
-                    calc(13px + env(safe-area-inset-top))
-                    13px
-                    calc(13px + env(safe-area-inset-bottom));
+            .action-icon {
+                width: 40px;
+                height: 40px;
+                margin-right: 13px;
+                border-radius: 14px;
+            }
+
+            .action-title {
+                font-size: 16px;
+            }
+
+            .page-footer {
+                margin-top: 28px;
             }
 
             .notice-dialog {
-                max-height: 88vh;
-                max-height: 88dvh;
                 border-radius: 25px;
             }
 
-            .notice-header {
-                min-height: 70px;
-                padding: 15px 15px 14px 20px;
-            }
-
-            .notice-title {
-                font-size: 19px;
-            }
-
-            .notice-close {
-                width: 40px;
-                height: 40px;
-            }
-
             .notice-body {
-                padding: 17px 18px 21px;
+                padding: 17px 17px 21px;
+            }
+        }
+
+        @media (max-height: 760px) and (max-width: 560px) {
+            .release-page {
+                padding-top:
+                    calc(22px + env(safe-area-inset-top));
+            }
+
+            .avatar-shell {
+                width: 100px;
+                height: 100px;
+                margin-bottom: 15px;
+            }
+
+            .avatar {
+                width: 82px;
+                height: 82px;
+                border-width: 4px;
+            }
+
+            .site-name {
+                font-size: 27px;
+            }
+
+            .site-slogan {
+                margin-top: 8px;
+                font-size: 15px;
+            }
+
+            .brand-divider {
+                margin-top: 16px;
+            }
+
+            .actions {
+                gap: 10px;
+                margin-top: 27px;
+            }
+
+            .action-button,
+            .action-button-primary {
+                min-height: 58px;
+            }
+
+            .action-icon {
+                width: 37px;
+                height: 37px;
+            }
+
+            .page-footer {
+                margin-top: 19px;
             }
         }
 
@@ -723,34 +766,29 @@
 </head>
 
 <body>
-    <main class="page">
-        <section class="main-card">
-
-            <div class="brand">
-                <div class="avatar-wrap">
+    <main class="release-page">
+        <div class="release-main">
+            <section class="brand">
+                <div class="avatar-shell">
                     <img
                         class="avatar"
                         src="./assets/avatar.webp"
                         alt="ACG游戏社头像"
-                        width="92"
-                        height="92"
+                        width="104"
+                        height="104"
                     >
                 </div>
 
                 <h1 class="site-name">ACG游戏社</h1>
 
-                <p class="site-description">
-                    官方网站发布页
+                <p class="site-slogan">
+                    免费分享，不负热爱
                 </p>
 
-                <div class="slogan">
-                    <span class="slogan-dot"></span>
-                    免费分享，不负热爱
-                </div>
-            </div>
+                <div class="brand-divider"></div>
+            </section>
 
-            <div class="actions">
-
+            <section class="actions">
                 <!-- 进入网站 -->
                 <a
                     class="action-button action-button-primary"
@@ -774,7 +812,9 @@
                     </span>
 
                     <span class="action-text">
-                        <span class="action-title">进入网站</span>
+                        <span class="action-title">
+                            进入网站
+                        </span>
 
                         <span class="action-description">
                             访问 ACG游戏社主站
@@ -808,14 +848,17 @@
                             stroke-linecap="round"
                             stroke-linejoin="round"
                         >
-                            <path d="M4 13V7a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v6"></path>
-                            <path d="M6 13h12l2 3v2a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1v-2l2-3Z"></path>
-                            <path d="M9 9h6"></path>
+                            <path d="M5 5h14v14H5z"></path>
+                            <path d="M8 9h8"></path>
+                            <path d="M8 13h8"></path>
+                            <path d="M8 17h5"></path>
                         </svg>
                     </span>
 
                     <span class="action-text">
-                        <span class="action-title">网站公告</span>
+                        <span class="action-title">
+                            网站公告
+                        </span>
 
                         <span class="action-description">
                             查看访问说明及最新通知
@@ -858,7 +901,9 @@
                     </span>
 
                     <span class="action-text">
-                        <span class="action-title">加入群聊</span>
+                        <span class="action-title">
+                            加入群聊
+                        </span>
 
                         <span class="action-description">
                             获取最新动态及地址通知
@@ -899,7 +944,9 @@
                     </span>
 
                     <span class="action-text">
-                        <span class="action-title">联系站长</span>
+                        <span class="action-title">
+                            联系站长
+                        </span>
 
                         <span class="action-description">
                             通过 Telegram 联系
@@ -918,15 +965,13 @@
                         </svg>
                     </span>
                 </a>
+            </section>
+        </div>
 
-            </div>
-
-            <footer class="footer">
-                <p>© 2026 ACG游戏社</p>
-                <p>请收藏本发布页，避免与本站失联</p>
-            </footer>
-
-        </section>
+        <footer class="page-footer">
+            <p>© 2026 ACG游戏社</p>
+            <p>请收藏本发布页，避免与本站失联</p>
+        </footer>
     </main>
 
     <!-- 网站公告弹窗 -->
@@ -1044,10 +1089,6 @@
             async function loadNotice() {
                 showLoading();
 
-                /*
-                 * 如果上一次公告请求还没有结束，
-                 * 先取消上一次请求。
-                 */
                 if (requestController) {
                     requestController.abort();
                 }
@@ -1055,10 +1096,6 @@
                 requestController = new AbortController();
 
                 try {
-                    /*
-                     * 每次打开公告都生成一个新地址，
-                     * 避免浏览器和中间缓存返回旧公告。
-                     */
                     const noticeUrl = new URL(
                         NOTICE_URL,
                         window.location.href
@@ -1075,11 +1112,7 @@
                             method: "GET",
                             cache: "no-store",
                             credentials: "same-origin",
-                            signal: requestController.signal,
-                            headers: {
-                                "Cache-Control": "no-cache",
-                                "Pragma": "no-cache"
-                            }
+                            signal: requestController.signal
                         }
                     );
 
@@ -1098,16 +1131,8 @@
                         throw new Error("公告内容为空");
                     }
 
-                    /*
-                     * notice.html 中的样式和公告内容
-                     * 会一起加载到弹窗中。
-                     */
                     noticeBody.innerHTML = html;
 
-                    /*
-                     * 日期来自 notice.html 的响应时间。
-                     * 获取不到就不显示，不生成虚假日期。
-                     */
                     if (lastModified) {
                         const formattedTime =
                             formatModifiedTime(lastModified);
@@ -1142,9 +1167,6 @@
 
                 document.body.classList.add("modal-open");
 
-                /*
-                 * 每次点击网站公告，都重新加载 notice.html。
-                 */
                 loadNotice();
 
                 window.setTimeout(() => {
@@ -1159,6 +1181,14 @@
                 modal.setAttribute("aria-hidden", "true");
 
                 document.body.classList.remove("modal-open");
+
+                if (
+                    requestController &&
+                    modal.getAttribute("aria-hidden") === "true"
+                ) {
+                    requestController.abort();
+                    requestController = null;
+                }
 
                 if (
                     lastFocusedElement &&
@@ -1195,24 +1225,17 @@
                 }
             });
 
-            /*
-             * 手机浏览器从后台、前进或后退恢复页面时，
-             * 清除弹窗中可能保留的旧公告。
-             */
             window.addEventListener("pageshow", event => {
-                if (event.persisted) {
-                    showLoading();
-
-                    modal.classList.remove("is-open");
-                    modal.setAttribute(
-                        "aria-hidden",
-                        "true"
-                    );
-
-                    document.body.classList.remove(
-                        "modal-open"
-                    );
+                if (!event.persisted) {
+                    return;
                 }
+
+                modal.classList.remove("is-open");
+                modal.setAttribute("aria-hidden", "true");
+
+                document.body.classList.remove("modal-open");
+
+                showLoading();
             });
         })();
     </script>
